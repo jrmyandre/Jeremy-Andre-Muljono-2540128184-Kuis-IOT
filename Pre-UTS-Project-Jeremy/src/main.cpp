@@ -120,6 +120,7 @@ void taskLed(void* arg){
     //{
     //  digitalWrite(LED_RED,HIGH);
     //}
+    //Used to test other LED karena ruangannya dingin banget
     
     else{
       digitalWrite(LED_RED, LOW);
