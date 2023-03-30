@@ -116,10 +116,10 @@ void taskLed(void* arg){
       digitalWrite(LED_YELLOW, LOW);
       digitalWrite(LED_GREEN, HIGH);
     }
-    else if (humidity >60)
-    {
-      digitalWrite(LED_RED,HIGH);
-    }
+    //else if (humidity >60)
+    //{
+    //  digitalWrite(LED_RED,HIGH);
+    //}
     
     else{
       digitalWrite(LED_RED, LOW);
