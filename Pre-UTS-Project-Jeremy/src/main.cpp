@@ -121,12 +121,7 @@ void taskLed(void* arg){
     //  digitalWrite(LED_RED,HIGH);
     //}
     //Used to test other LED karena ruangannya dingin banget
-    
-    else{
-      digitalWrite(LED_RED, LOW);
-      digitalWrite(LED_YELLOW, LOW);
-      digitalWrite(LED_GREEN, LOW);
-    }
+   
     vTaskDelay(1000 / portTICK_PERIOD_MS);
   }
 }
