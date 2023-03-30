@@ -116,10 +116,10 @@ void taskLed(void* arg){
       digitalWrite(LED_YELLOW, LOW);
       digitalWrite(LED_GREEN, HIGH);
     }
-    // else if (humidity >60)
-    // {
-    //   digitalWrite(LED_RED,HIGH);
-    // }
+    else if (humidity >60)
+    {
+      digitalWrite(LED_RED,HIGH);
+    }
     
     else{
       digitalWrite(LED_RED, LOW);
@@ -154,7 +154,7 @@ void tempPublishMessage()
   if (dht.getStatus()==DHTesp::ERROR_NONE)
   {
     Serial.printf("Temperature: %.2f C\n", temperature);
-    sprintf(szData, " Temperature: %.2f C", temperature);
+    sprintf(szData, "Temperature: %.2f C", temperature);
     mqtt.publish(MQTT_TOPIC_PUBLISH, szData);
   }
 }
@@ -179,19 +179,21 @@ void luxPublishMessage(){
   float lux = lightMeter.readLightLevel();
 
   
-  sprintf(szData, "Light %.2f lx", lux);
-  mqtt.publish(MQTT_TOPIC_PUBLISH, szData);
 
   if (lux > 400)
   {
     Serial.printf("Warning!! Door open, Light: %.2f lx\n", lux);
+    sprintf(szData, "Door open, Light %.2f lx", lux);
+
   }
   else if (lux <= 400)
   {
     Serial.printf("Door closed, Light: %.2f lx\n", lux);
+    sprintf(szData, "Door closed, Light %.2f lx", lux);
+
   }
   
-  
+  mqtt.publish(MQTT_TOPIC_PUBLISH, szData);
 }
 
 
